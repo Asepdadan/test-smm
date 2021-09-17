@@ -66,11 +66,38 @@ class BarangSeeder extends Seeder
         ]);
 
         \App\Barang::create([
-            'kode' => 'XXX-XXX-009',
+            'kode' => 'XXX-XXX-008',
             'nama' => 'LAPTOP ASUS XXX-A029',
             'lokasi' => 'L1-IT5B',
             'stok' => '150',
             'satuan' => 'BOX',
+            'status' => '<i class="badge badge-success">Terpenuhi</i>'
+        ]);
+
+        \App\Barang::create([
+            'kode' => 'XXX-XXX-007',
+            'nama' => 'MAP BIRU',
+            'lokasi' => 'L2-TT5B',
+            'stok' => '250',
+            'satuan' => 'PCS',
+            'status' => '<i class="badge badge-success">Terpenuhi</i>'
+        ]);
+
+        \App\Barang::create([
+            'kode' => 'XXX-XXX-006',
+            'nama' => 'PENGHAPUS WHITE BOR',
+            'lokasi' => 'L2-TI2B',
+            'stok' => '50',
+            'satuan' => 'PCS',
+            'status' => '<i class="badge badge-success">Terpenuhi</i>'
+        ]);
+
+        \App\Barang::create([
+            'kode' => 'XXX-XXX-006',
+            'nama' => 'MATERAI 10000 ',
+            'lokasi' => 'L2-TI2B',
+            'stok' => '150',
+            'satuan' => 'PCS',
             'status' => '<i class="badge badge-success">Terpenuhi</i>'
         ]);
     }

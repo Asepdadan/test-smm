@@ -14,3 +14,8 @@
 3. composer install
 4. php artisan migrate
 5. php artisan db:seed
+
+## RUN APP
+1. php artisan serve 
+2. akses di browser http://localhost:8000
+

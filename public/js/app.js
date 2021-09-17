@@ -3870,7 +3870,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -44712,7 +44711,7 @@ var render = function() {
           columns: _vm.columns,
           rows: _vm.permintaans.data,
           totalRows: _vm.permintaans.total,
-          "max-height": "400px",
+          "max-height": "500px",
           "line-numbers": true,
           isLoading: _vm.isLoading,
           "search-options": {

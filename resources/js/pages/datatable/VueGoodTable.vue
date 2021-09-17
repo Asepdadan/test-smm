@@ -4,7 +4,7 @@
             :columns="columns"
             :rows="permintaans.data"
             :totalRows="permintaans.total"
-            max-height="400px"
+            max-height="500px"
             :line-numbers="true"
             :isLoading.sync="isLoading"
             @on-page-change="onPageChange"
@@ -12,7 +12,6 @@
             :search-options="{
                 enabled: true,
                 placeholder: 'Cari data dari tabel ini',
-
               }"
             :pagination-options="{
             enabled: true,
