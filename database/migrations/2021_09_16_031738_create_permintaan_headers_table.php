@@ -15,8 +15,9 @@ class CreatePermintaanHeadersTable extends Migration
     {
         Schema::create('permintaan_headers', function (Blueprint $table) {
             $table->id();
+            $table->integer('pegawai_id');
             $table->char('no_transaksi', 20);
-            $table->date('tanggal');
+            $table->datetime('tanggal');
             $table->timestamps();
         });
     }

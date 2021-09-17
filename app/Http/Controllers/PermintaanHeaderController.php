@@ -50,7 +50,7 @@ class PermintaanHeaderController extends Controller
         try {
             $string = date('ymd');
             $noTransaksi = $string."".rand();
-            $tanggal = date('Y-m-d', strtotime($request->tanggal));
+            $tanggal = date('Y-m-d H:i:s', strtotime($request->tanggal));
 
             $validator = Validator::make($request->all(), [
                 'pegawai_id' => 'required|exists:pegawais,id',

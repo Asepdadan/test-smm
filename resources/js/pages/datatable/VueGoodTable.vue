@@ -59,10 +59,10 @@ export default {
                 {
                     label: 'Tanggal',
                     field: 'tanggal',
-                    type: 'date',
-                    dateInputFormat: 'yyyy-MM-dd',
-                    dateOutputFormat: 'd MMM Y',
-                    width: '150px',
+                    type: 'datetime',
+                    dateInputFormat: 'yyyy-MM-dd hh:ii:ss',
+                    dateOutputFormat: 'd MMM Y hh:ii:ss',
+                    width: '200px',
                 },
                 {
                     label: 'Created At',

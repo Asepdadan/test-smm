@@ -63,7 +63,8 @@
                                             <div class="form-group">
                                                 <label>Tanggal Permintaan</label><br>
                                                 <date-picker v-model="data.tanggal" @input="changeDate"
-                                                             format="DD MMM YYYY"
+                                                             format="DD MMM YYYY HH:mm:ss"
+                                                             type="datetime"
                                                              valueType="format"></date-picker>
                                             </div>
                                         </div>

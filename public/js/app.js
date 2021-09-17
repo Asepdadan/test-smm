@@ -3421,6 +3421,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -3897,10 +3898,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, {
         label: 'Tanggal',
         field: 'tanggal',
-        type: 'date',
-        dateInputFormat: 'yyyy-MM-dd',
-        dateOutputFormat: 'd MMM Y',
-        width: '150px'
+        type: 'datetime',
+        dateInputFormat: 'yyyy-MM-dd hh:ii:ss',
+        dateOutputFormat: 'd MMM Y hh:ii:ss',
+        width: '200px'
       }, {
         label: 'Created At',
         field: 'created_at',
@@ -44164,7 +44165,8 @@ var render = function() {
                           _vm._v(" "),
                           _c("date-picker", {
                             attrs: {
-                              format: "DD MMM YYYY",
+                              format: "DD MMM YYYY HH:mm:ss",
+                              type: "datetime",
                               valueType: "format"
                             },
                             on: { input: _vm.changeDate },
