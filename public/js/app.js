@@ -3476,8 +3476,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.barang[index].barang_id = value.id;
       this.barang[index].lokasi = value.lokasi;
       this.barang[index].stok = value.stok;
-      this.barang[index].satuan = value.satuan;
-      this.barang[index].status = value.status;
+      this.barang[index].satuan = value.satuan; // this.barang[index].status = value.status
+
+      this.checkValidasiStok(index, this.barang[index]);
     },
     tambahElementBarang: function tambahElementBarang() {
       this.barang.push({
@@ -3496,23 +3497,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       console.log(this.barang, index, indexArray);
     },
     checkValidasiStok: function checkValidasiStok(index, barang) {
-      var _this = this;
-
       console.log(barang, index);
 
-      if (barang.qty > barang.barang_data_id.stok) {
-        sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
-          title: 'Error!',
-          text: 'Kuantiti tidak boleh lebih dari stok',
-          icon: 'error',
-          confirmButtonText: 'Cool'
-        }).then(function (result) {
-          if (result.isConfirmed) {
-            _this.barang[index].qty = 0;
-          } else if (result.isDenied) {
-            _this.barang[index].qty = 0;
-          }
-        });
+      if (barang.barang_data_id.stok == "" || barang.barang_data_id.stok == 0) {
+        this.barang[index].status = "<i class='badge badge-danger'>Kosong</i>";
+      } else if (barang.qty > barang.barang_data_id.stok) {
+        // Swal.fire({
+        //     title: 'Error!',
+        //     text: 'Kuantiti tidak boleh lebih dari stok',
+        //     icon: 'error',
+        //     confirmButtonText: 'Cool'
+        // }).then((result) => {
+        //     if (result.isConfirmed) {
+        //         this.barang[index].qty = 0
+        //     } else if (result.isDenied) {
+        //         this.barang[index].qty = 0
+        //     }
+        // })
+        this.barang[index].status = "<i class='badge badge-danger'>Sebagian</i>";
+      } else {
+        this.barang[index].status = "<i class='badge badge-info'>Terpenuhi</i>";
       }
     },
     changeDate: function changeDate(value) {
@@ -3547,7 +3551,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return true;
     },
     submit: function submit() {
-      var _this2 = this;
+      var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var payload;
@@ -3556,12 +3560,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context.prev = _context.next) {
               case 0:
                 payload = {
-                  pegawai_id: _this2.data.pegawai_id.id,
-                  tanggal: _this2.data.tanggal,
-                  detail: _this2.barang
+                  pegawai_id: _this.data.pegawai_id.id,
+                  tanggal: _this.data.tanggal,
+                  detail: _this.barang
                 };
 
-                if (_this2.data.pegawai_id.id) {
+                if (_this.data.pegawai_id.id) {
                   _context.next = 4;
                   break;
                 }
@@ -3575,7 +3579,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return _context.abrupt("return", false);
 
               case 4:
-                if (_this2.data.tanggal) {
+                if (_this.data.tanggal) {
                   _context.next = 7;
                   break;
                 }
@@ -3589,7 +3593,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return _context.abrupt("return", false);
 
               case 7:
-                if (!(_this2.barang.length < 1)) {
+                if (!(_this.barang.length < 1)) {
                   _context.next = 10;
                   break;
                 }
@@ -3614,7 +3618,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   cancelButtonText: 'Tidak, Simpan!'
                 }).then(function (result) {
                   if (result.isConfirmed) {
-                    _this2.submitPermintaan(payload).then(function (response) {
+                    _this.submitPermintaan(payload).then(function (response) {
                       console.log(response);
                       sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire({
                         title: response.code,
@@ -3622,7 +3626,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                         icon: response.code
                       }).then(function () {
                         if (response.code == "success") {
-                          _this2.$router.push({
+                          _this.$router.push({
                             path: "/"
                           });
                         }

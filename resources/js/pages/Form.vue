@@ -217,7 +217,8 @@ export default {
             this.barang[index].lokasi = value.lokasi
             this.barang[index].stok = value.stok
             this.barang[index].satuan = value.satuan
-            this.barang[index].status = value.status
+            // this.barang[index].status = value.status
+            this.checkValidasiStok(index, this.barang[index])
         },
         tambahElementBarang() {
             this.barang.push({
@@ -235,19 +236,24 @@ export default {
         },
         checkValidasiStok(index, barang) {
             console.log(barang, index)
-            if (barang.qty > barang.barang_data_id.stok) {
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Kuantiti tidak boleh lebih dari stok',
-                    icon: 'error',
-                    confirmButtonText: 'Cool'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        this.barang[index].qty = 0
-                    } else if (result.isDenied) {
-                        this.barang[index].qty = 0
-                    }
-                })
+            if (barang.barang_data_id.stok == "" || barang.barang_data_id.stok == 0) {
+                this.barang[index].status = "<i class='badge badge-danger'>Kosong</i>";
+            }else if (barang.qty > barang.barang_data_id.stok) {
+                // Swal.fire({
+                //     title: 'Error!',
+                //     text: 'Kuantiti tidak boleh lebih dari stok',
+                //     icon: 'error',
+                //     confirmButtonText: 'Cool'
+                // }).then((result) => {
+                //     if (result.isConfirmed) {
+                //         this.barang[index].qty = 0
+                //     } else if (result.isDenied) {
+                //         this.barang[index].qty = 0
+                //     }
+                // })
+                this.barang[index].status = "<i class='badge badge-danger'>Sebagian</i>";
+            } else {
+                this.barang[index].status = "<i class='badge badge-info'>Terpenuhi</i>";
             }
         },
         changeDate(value) {
